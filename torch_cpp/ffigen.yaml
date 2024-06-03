@@ -1,0 +1,22 @@
+# Run with `flutter pub run ffigen --config ffigen.yaml`.
+
+name: TorchCppBindings
+description: "Bindings for the Torch C++ API"
+output: 'lib/bindings_generated.dart'
+headers:
+  entry-points:
+    - 'src/torch.h'
+  include-directives:
+    - 'src/torch.h'
+# compiler-opts:
+#   - '-l libraries -i headers'
+type-map:
+  native-types:
+    'char':
+      'lib': 'pkg_ffi'
+      'c-type': 'Utf8'
+      'dart-type': 'Utf8'
+    'int':
+      'lib': 'ffi'
+      'c-type': 'Int32'
+      'dart-type': 'int'

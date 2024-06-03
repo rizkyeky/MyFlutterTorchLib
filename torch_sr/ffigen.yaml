@@ -1,0 +1,26 @@
+# Run with `dart run ffigen --config ffigen.yaml`.
+
+name: TorchSRBindings
+description: "Bindings for the Torch SR API"
+output: 'lib/bindings_generated.dart'
+headers:
+  entry-points:
+    - 'src/torch_sr.h'
+  include-directives:
+    - 'src/torch_sr.h'
+# compiler-opts:
+#   - '-L macos/Libs/libtorch_cpu.dylib -L macos/Libs/libc10.dylib'
+type-map:
+  native-types:
+    'char':
+      'lib': 'pkg_ffi'
+      'c-type': 'Utf8'
+      'dart-type': 'Utf8'
+    'int':
+      'lib': 'ffi'
+      'c-type': 'Int32'
+      'dart-type': 'int'
+    'uint8_t':
+      'lib': 'ffi'
+      'c-type': 'Uint8'
+      'dart-type': 'int'
